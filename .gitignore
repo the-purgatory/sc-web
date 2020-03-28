@@ -1,7 +1,8 @@
 # OSX
 #
 .DS_Store
-
+# Optional eslint cache
+.eslintcache
 # Xcode
 #
 build/
