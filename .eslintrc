@@ -1,0 +1,22 @@
+{
+  "root": true,
+  "extends": ["airbnb", "prettier", "prettier/react"],
+  "plugins": ["react", "prettier"],
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true,
+    "jest": true
+  },
+  "rules": {
+    "prettier/prettier": ["error"],
+    "react/jsx-filename-extension": [
+      "error",
+      { "extensions": [".js", ".jsx"] }
+    ],
+    // Disabling this rule until this is resolved https://github.com/yannickcr/eslint-plugin-react/issues/1848
+    // at the moment the fix makes the code look messy and at times unreadable
+    // "react/prefer-stateless-function": "off",
+    "react/jsx-one-expression-per-line": "off"
+  }
+}
