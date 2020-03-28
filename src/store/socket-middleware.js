@@ -1,15 +1,15 @@
 // https://stackoverflow.com/questions/37876889/react-redux-and-websockets-with-socket-io?noredirect=1
 export default function socketMiddleware(client) {
   return ({ dispatch, getState }) => {
-    return next => action => {
+    return (next) => (action) => {
       if (typeof action === 'function') {
         return action(dispatch, getState);
       }
 
       const { promise, types, ...rest } = action; // eslint-disable-line no-redeclare
-      if (type !== 'socket' || !promise) {
-        return next(action);
-      }
+      //   if (type !== 'socket' || !promise) {
+      //     return next(action);
+      //   }
 
       const [REQUEST, SUCCESS, FAILURE] = types;
       next({ ...rest, type: REQUEST });
@@ -17,10 +17,10 @@ export default function socketMiddleware(client) {
       const actionPromise = promise(client);
       actionPromise
         .then(
-          result => next({ ...rest, result, type: SUCCESS }),
-          error => next({ ...rest, error, type: FAILURE })
+          (result) => next({ ...rest, result, type: SUCCESS }),
+          (error) => next({ ...rest, error, type: FAILURE })
         )
-        .catch(error => {
+        .catch((error) => {
           console.error('MIDDLEWARE ERROR:', error);
           next({ ...rest, error, type: FAILURE });
         });
