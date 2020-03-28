@@ -8,7 +8,7 @@ import store from './store';
 
 ReactDOM.render(
   <Provider store={store}>
-    <div>sc-web</div>
+    <div>This is sc-web</div>
   </Provider>,
   document.getElementById('app-container')
 );
