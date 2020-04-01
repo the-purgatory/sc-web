@@ -9,7 +9,10 @@ jobs:
   pr-labeler:
     runs-on: ubuntu-latest
     steps:
-      - uses: ./pr-labeler-action
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: Local Pr labeler
+        uses: ./pr-labeler-action
         with:
           configuration-path: .github/pr-labeler.yml # optional, .github/pr-labeler.yml is the default value
         env:
