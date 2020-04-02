@@ -12,7 +12,7 @@ jobs:
       - name: checkout
         uses: actions/checkout@v2
       - name: Local Pr labeler
-        uses: .github/actions/pr-labeler
+        uses: ./.github/actions/pr-labeler
         with:
           configuration-path: .github/pr-labeler.yml # optional, .github/pr-labeler.yml is the default value
         env:
