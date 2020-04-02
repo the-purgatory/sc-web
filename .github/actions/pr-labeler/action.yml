@@ -1,5 +1,5 @@
 name: 'PR Labeler'
-description: 'Automatically  labels your PRs based on branch name patterns like feature/* or fix/*.'
+description: 'Automatically labels your PRs based on branch name patterns like feature/* or fix/*.'
 author: 'Timon van Spronsen'
 inputs:
   configuration-path:
