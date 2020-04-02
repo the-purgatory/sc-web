@@ -9,8 +9,6 @@ jobs:
   pr-labeler:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
-        uses: actions/checkout@v2
       - name: Local Pr labeler
         uses: ./.github/actions/pr-labeler
         with:
