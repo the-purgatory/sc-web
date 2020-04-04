@@ -1,5 +1,3 @@
 {
-  "editor.formatOnSave": true,
-  "createTests.defaultLocationForTestFiles": "project root",
-  "createTests.testDirectoryName": "__tests__"
+  "editor.formatOnSave": true
 }

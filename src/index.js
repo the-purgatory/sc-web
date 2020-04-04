@@ -5,9 +5,11 @@ import { Provider } from 'react-redux';
 import store from './store';
 // import Routes from '__ROUTES/';
 
+const App = () => <div>This is dark web</div>;
+
 ReactDOM.render(
   <Provider store={store}>
-    <div>This is sc-web</div>
+    <App />
   </Provider>,
   document.getElementById('app-container')
 );

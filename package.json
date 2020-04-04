@@ -5,9 +5,9 @@
   "main": "src/index.js",
   "repository": "git@github.com:the-purgatory/sc-web.git",
   "bugs": {
-    "url": "https://github.com/ankushjamdagani/semantic-chat/issues"
+    "url": "https://github.com/the-purgatory/sc-web/issues"
   },
-  "homepage": "https://github.com/ankushjamdagani/semantic-chat#readme",
+  "homepage": "https://github.com/the-purgatory/sc-web#readme",
   "scripts": {
     "start": "webpack-dev-server --open --color --mode-development",
     "build": "webpack --mode production",
@@ -49,13 +49,14 @@
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
     "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
     "socket.io-client": "^2.3.0",
     "styled-components": "^5.0.1"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "./branch-name-hook.sh && yarn prettier && yarn lint:fix"
+      "pre-commit": "yarn prettier && yarn lint:fix"
     }
   }
 }
