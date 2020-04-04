@@ -2,4 +2,3 @@ feature: ['feature/*', 'feat/*']
 fix: ['bugfix/*', 'bug/*', 'hotfix/*', 'fix/*']
 documentation: ['documentations/*', 'documentation/*', 'docs/*', 'doc/*']
 misc: ['misceleneous/*', 'misc/*', 'test/*', 'random/*']
-chore: 'chore/*'

@@ -24,13 +24,13 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env']
-          }
-        }
-        // use: ['babel-loader']
+        // use: {
+        //   loader: 'babel-loader',
+        //   options: {
+        //     presets: ['@babel/preset-env']
+        //   }
+        // }
+        use: ['babel-loader']
       },
       //   {
       //     test: /\.(css|scss)$/,
@@ -41,14 +41,6 @@ module.exports = {
         test: /\.(png|svg|jpg|gif)$/,
         exclude: /node_modules/,
         use: 'file-loader'
-      },
-      {
-        test: /\.md$/,
-        use: [
-          {
-            loader: 'html-loader'
-          }
-        ]
       },
       {
         test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,

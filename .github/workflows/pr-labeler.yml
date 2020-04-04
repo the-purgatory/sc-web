@@ -1,7 +1,7 @@
 name: PR Labeler
 on:
   pull_request:
-    branches: 
+    branches:
       - master
     types: [opened]
 
@@ -9,7 +9,8 @@ jobs:
   pr-labeler:
     runs-on: ubuntu-latest
     steps:
-      - uses: TimonVS/pr-labeler-action@v3
+      - name: run action
+        uses: TimonVS/pr-labeler-action@v3
         with:
           configuration-path: .github/pr-labeler.yml # optional, .github/pr-labeler.yml is the default value
         env:

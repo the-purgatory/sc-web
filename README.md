@@ -1,4 +1,4 @@
-# Semantic Chat Website
+# Semantic Chat Webapp
 <a href="https://codeclimate.com/github/the-purgatory/sc-web/maintainability"><img src="https://api.codeclimate.com/v1/badges/791ddb2b8b13560ed2fa/maintainability" /></a> ![Release Drafter](https://github.com/the-purgatory/sc-web/workflows/Release%20Drafter/badge.svg?branch=master)
 ----
 
