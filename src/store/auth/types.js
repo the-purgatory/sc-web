@@ -1,0 +1,3 @@
+export const LOGIN_START = 'AUTH__LOGIN_START';
+export const LOGIN_SUCCESS = 'AUTH__LOGIN_SUCCESS';
+export const LOGIN_FAIL = 'AUTH__LOGIN_FAIL';
