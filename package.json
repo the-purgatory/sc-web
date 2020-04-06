@@ -27,6 +27,7 @@
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-config-prettier": "^6.10.1",
+    "eslint-import-resolver-webpack": "^0.12.1",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-prettier": "^3.1.2",
@@ -44,6 +45,9 @@
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
+    "@styled-system/css": "^5.1.5",
+    "@styled-system/prop-types": "^5.1.5",
+    "@styled-system/theme-get": "^5.1.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",
@@ -52,7 +56,8 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
     "socket.io-client": "^2.3.0",
-    "styled-components": "^5.0.1"
+    "styled-components": "^5.0.1",
+    "styled-system": "^5.1.5"
   },
   "husky": {
     "hooks": {
