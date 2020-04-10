@@ -6,28 +6,35 @@ import styled, { ThemeProvider } from 'styled-components';
 import { themeGet } from '@styled-system/theme-get';
 import { space } from 'styled-system';
 
-import GlobalStyle from '__STYLES/global-styles';
+import CommonStyle from '__STYLES/common';
+import ResetStyle from '__STYLES/reset';
 import theme from '__STYLES/theme';
 
 import store from './store';
 
-const App = styled.div`
+const StyledDiv = styled.div`
   ${space}
-  background: ${themeGet('colors.background')};
-  color: ${(props) => props.theme.colors.text};
-  border: solid 5px ${themeGet('colors.blue.5')};
+  background: ${themeGet('color.red.0')};
+  color: ${themeGet('color.primary')};
+  font-family: ${themeGet('font.family.cursive3')};
+  font-size: ${themeGet('font.size.5')};
+  border: solid 5px ${themeGet('color.red.1')};
 `;
 
-ReactDOM.render(
-  <Provider store={store}>
-    <ThemeProvider theme={theme}>
-      <>
-        <App py={10} px={20}>
-          This is dark web
-        </App>
-        <GlobalStyle />
-      </>
-    </ThemeProvider>
-  </Provider>,
-  document.getElementById('app-container')
-);
+const App = () => {
+  return (
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <>
+          <ResetStyle />
+          <CommonStyle />
+          <StyledDiv py={4} px={4}>
+            This is dark web
+          </StyledDiv>
+        </>
+      </ThemeProvider>
+    </Provider>
+  );
+};
+
+ReactDOM.render(<App />, document.getElementById('app-container'));
