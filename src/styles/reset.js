@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
-export default createGlobalStyle`/* Box sizing rules */
+export default createGlobalStyle`
+  /* Box sizing rules */
   *,
   *::before,
   *::after {
@@ -29,14 +30,6 @@ export default createGlobalStyle`/* Box sizing rules */
   dl,
   dd {
     margin: 0;
-  }
-
-  /* Set core body defaults */
-  body {
-    min-height: 100vh;
-    scroll-behavior: smooth;
-    text-rendering: optimizeSpeed;
-    line-height: 1.5;
   }
 
   /* Remove list styles on ul, ol elements with a class attribute */
