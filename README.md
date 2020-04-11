@@ -8,8 +8,8 @@ All the docs are referenced below -
 **Authors** -
 |                   | Name             | Ownership    |
 | :---------------: | ---------------  | ------------ |
-![NaveenJamdagani](https://avatars3.githubusercontent.com/u/27627139?s=40&v=4) | [Naveen Jamdagani](github.com/NaveenJamdagani) 🐙 | Mobile App & Backend
-![ankushjamdagani](https://avatars2.githubusercontent.com/u/13179262?s=40&v=4) | [Ankush Jamdagani](github.com/ankushjamdagani) 🐸 | Web App & Backend
-![rashmisangwan](https://avatars0.githubusercontent.com/u/27778168?s=40&v=4) | [Rashmi Sangwan](github.com/rashmisangwan) 🐼 | Data Science
+![NaveenJamdagani](https://avatars3.githubusercontent.com/u/27627139?s=40&v=4) | [Naveen Jamdagani](https://github.com/NaveenJamdagani) 🐙 | Mobile App & Backend
+![ankushjamdagani](https://avatars2.githubusercontent.com/u/13179262?s=40&v=4) | [Ankush Jamdagani](https://github.com/ankushjamdagani) 🐸 | Web App & Backend
+![rashmisangwan](https://avatars0.githubusercontent.com/u/27778168?s=40&v=4) | [Rashmi Sangwan](https://github.com/rashmisangwan) 🐼 | Data Science
 
 `Copyright [2020] [The Purgatory]`
