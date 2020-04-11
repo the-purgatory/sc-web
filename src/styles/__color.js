@@ -14,13 +14,15 @@ const PALLETE = {
 };
 
 export default {
-  ...PALLETE,
-  primary: PALLETE.indigo[0],
-  secondary: PALLETE.indigo[2],
-  text: PALLETE.black[0],
-  field: PALLETE.black[1],
-  error: PALLETE.red[0],
-  succss: PALLETE.green[0],
-  disabled: PALLETE.black[2],
-  loading: PALLETE.black[2]
+  colors: {
+    ...PALLETE,
+    primary: PALLETE.indigo[0],
+    secondary: PALLETE.indigo[2],
+    text: PALLETE.black[0],
+    field: PALLETE.black[1],
+    error: PALLETE.red[0],
+    succss: PALLETE.green[0],
+    disabled: PALLETE.black[2],
+    loading: PALLETE.black[2]
+  }
 };

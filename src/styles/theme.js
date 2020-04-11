@@ -4,8 +4,8 @@ import layout from './__layout';
 import general from './__general';
 
 export default {
-  color,
-  font,
-  layout,
+  ...color,
+  ...layout,
+  ...font,
   ...general
 };

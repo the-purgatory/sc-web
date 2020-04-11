@@ -6,10 +6,12 @@
  * - Styles for H1, H2, H3,.... etc in global styles
  */
 export default {
-  size: [10, 12, 14, 16, 20, 24, 32, 48, 64, 96].map((elem) => `${elem}px`),
-  weight: [100, 400, 500, 700],
-  lineHeight: [1, 1.15, 1.3, 1.5],
-  family: {
+  fontSizes: [10, 12, 14, 16, 20, 24, 32, 48, 64, 96].map(
+    (elem) => `${elem}px`
+  ),
+  fontWeights: [100, 400, 500, 700],
+  lineHeights: [1, 1.15, 1.3, 1.5],
+  fonts: {
     normal: "'Roboto', sans-serif",
     mono: "'Roboto Mono', monospace",
     cursive1: "'Caveat', cursive",
