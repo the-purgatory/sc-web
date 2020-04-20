@@ -46,9 +46,12 @@
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.13.0",
     "@styled-system/css": "^5.1.5",
     "@styled-system/prop-types": "^5.1.5",
     "@styled-system/theme-get": "^5.1.2",
+    "dotenv": "^8.2.0",
+    "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",

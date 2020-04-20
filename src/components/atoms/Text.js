@@ -8,6 +8,12 @@ const Text = styled.div`
 	${color}
 `;
 
+Text.defaultProps = {
+  fontFamily: 'normal',
+  fontSize: 2,
+  color: 'text'
+};
+
 Text.propTypes = {
   ...propTypes.typography,
   ...propTypes.space,

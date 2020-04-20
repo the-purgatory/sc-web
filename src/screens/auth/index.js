@@ -1,8 +1,12 @@
 import React from 'react';
 
-import { Text, FlexBox, Box } from '__COMPONENTS/atoms';
+import { Text, Loader, Logo, FlexBox, Box } from '__COMPONENTS/atoms';
+import { Dropdown } from '__COMPONENTS/molecules';
 
-import Logo from '__ASSETS/images/logo.svg';
+const dropdownOptions = [
+  { icon: '', label: 'Label', key: 'key1' },
+  { icon: '', label: 'Label', key: 'key2' }
+];
 
 const AuthScreen = () => {
   return (
@@ -19,7 +23,7 @@ const AuthScreen = () => {
         maxWidth='1200px'
         width='100%'
       >
-        <Text fontSize={3} fontWeight='2'>
+        <Text fontSize={3} fontWeight='3'>
           /the-purgatory
         </Text>
       </FlexBox>
@@ -36,9 +40,14 @@ const AuthScreen = () => {
           justifyContent='center'
         >
           <Box>
-            <img src={Logo} alt='semantic-chat' />
+            <Logo primaryColor='indigo.0' secondaryColor='indigo.2' />
           </Box>
-          <Box pt={4}>Loading...</Box>
+          <Box pt={5}>
+            <Loader />
+          </Box>
+          <Box pt={5}>
+            <Dropdown direction='right' options={dropdownOptions} />
+          </Box>
         </FlexBox>
       </FlexBox>
     </FlexBox>

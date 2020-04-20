@@ -12,7 +12,8 @@ export default {
   fontWeights: [100, 400, 500, 700],
   lineHeights: [1, 1.15, 1.3, 1.5],
   fonts: {
-    normal: "'Roboto', sans-serif",
+    normal: "'Raleway', sans-serif",
+    normal1: "'Roboto', sans-serif",
     mono: "'Roboto Mono', monospace",
     cursive1: "'Caveat', cursive",
     cursive2: "'Amatic SC', cursive",
