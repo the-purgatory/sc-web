@@ -10,8 +10,8 @@ const PALLETE = {
   // blue:    ['#0C2461', '#4A69BD', '#6A89CC', '#A6B8E0'],
   red: ['#E55039', '#FF9F1C', '#FFEAA7'],
   green: ['#16593A', '#02C39A', '#BCFFDB'],
-  blue: ['#0C2461', '#6A89CC', '#A6B8E0'],
-  indigo: ['#2D132C', '#9A8C98', '#FEF4EF'],
+  blue: ['#0C2461', '#6A89CC', '#A6B8E0', 'rgba(166, 184, 224, 0.3)'],
+  indigo: ['#2D132C', '#9A8C98', '#FEF4EF', 'rgba(45, 19, 44, 0.05)'],
   violet: ['#431C5D', '#6F7BBF', '#D8DCFF']
 };
 
@@ -26,6 +26,6 @@ export default {
     succss: PALLETE.green[0],
     disabled: PALLETE.black[4],
     loading: PALLETE.black[4],
-    background: PALLETE.white[1]
+    background: PALLETE.white[0]
   }
 };

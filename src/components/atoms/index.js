@@ -9,3 +9,8 @@ export { default as Loader } from './Loader';
 export { default as Logo } from './Logo';
 
 export { default as Portal } from './Portal';
+
+export { default as Button } from './Button';
+export { default as Input } from './Input';
+export { default as LinkButton } from './LinkButton';
+export { default as Seperator } from './Seperator';

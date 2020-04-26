@@ -1,12 +1,32 @@
 import React from 'react';
+import styled from 'styled-components';
+import themeGet from '@styled-system/theme-get';
 
-import { Text, Loader, Logo, FlexBox, Box } from '__COMPONENTS/atoms';
-import { Dropdown } from '__COMPONENTS/molecules';
+import { Text, Logo, FlexBox } from '__COMPONENTS/atoms';
 
-const dropdownOptions = [
-  { icon: '', label: 'Label', key: 'key1' },
-  { icon: '', label: 'Label', key: 'key2' }
-];
+import FormContainer from './components/form-container';
+
+const Wrapper = styled(FlexBox)`
+  background: ${themeGet('colors.white.0')};
+  min-width: 80%;
+  width: 600px;
+  height: 600px;
+`;
+
+const LogoWrapper = styled(FlexBox)`
+  position: relative;
+  overflow: hidden;
+  &:after {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%);
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: ${themeGet('colors.indigo.3')};
+  }
+`;
 
 const AuthScreen = () => {
   return (
@@ -16,40 +36,21 @@ const AuthScreen = () => {
       alignItems='center'
       justifyContent='center'
     >
-      <FlexBox
-        alignItems='flex-start'
-        px={3}
-        py={2}
-        maxWidth='1200px'
-        width='100%'
-      >
-        <Text fontSize={3} fontWeight='3'>
-          /the-purgatory
-        </Text>
-      </FlexBox>
-      <FlexBox
-        flex='1'
-        maxWidth='1200px'
-        width='100%'
-        alignItems='center'
-        justifyContent='center'
-      >
-        <FlexBox
-          flexDirection='column'
-          alignItems='center'
-          justifyContent='center'
-        >
-          <Box>
+      <Wrapper alignItems='stretch'>
+        <LogoWrapper flexDirection='column' bg='indigo.2' p={5} flex={1}>
+          <FlexBox justifyContent='flex-end'>
+            <Text fontSize={3} fontWeight='heavy' color='indigo.0'>
+              /the-purgatory
+            </Text>
+          </FlexBox>
+          <FlexBox flex={1} alignItems='center' justifyContent='center'>
             <Logo primaryColor='indigo.0' secondaryColor='indigo.2' />
-          </Box>
-          <Box pt={5}>
-            <Loader />
-          </Box>
-          <Box pt={5}>
-            <Dropdown direction='right' options={dropdownOptions} />
-          </Box>
+          </FlexBox>
+        </LogoWrapper>
+        <FlexBox alignItems='center' justifyContent='center' p={5} flex={1}>
+          <FormContainer />
         </FlexBox>
-      </FlexBox>
+      </Wrapper>
     </FlexBox>
   );
 };

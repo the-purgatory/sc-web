@@ -8,10 +8,10 @@ export default function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path='/auth'>
+        <Route path='/auth'>
           <AuthScreen />
         </Route>
-        <Route path='/'>
+        <Route>
           <HomeScreen />
         </Route>
       </Switch>

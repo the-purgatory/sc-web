@@ -11,7 +11,8 @@ const Text = styled.div`
 Text.defaultProps = {
   fontFamily: 'normal',
   fontSize: 2,
-  color: 'text'
+  color: 'text',
+  letterSpacing: '.05em'
 };
 
 Text.propTypes = {

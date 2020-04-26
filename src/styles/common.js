@@ -12,6 +12,7 @@ export default createGlobalStyle`
     line-height: 1.5;
     font-size: ${themeGet('fontSizes.2')};
     font-family: ${themeGet('fonts.normal')};
+    font-weight: ${themeGet('fontWeights.medium')};
     background: ${themeGet('colors.background')};
     color: ${themeGet('colors.text')};
     letter-spacing: 0.0625em;

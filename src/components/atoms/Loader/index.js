@@ -30,9 +30,10 @@ const BallContainer = styled.div`
 `;
 
 const Ball = styled.div`
-  ${layout}
   ${color}
   border-radius: ${themeGet('radii.3')};
+  width: ${(props) => props.ballSize}px;
+  height: ${(props) => props.ballSize}px;
 `;
 
 // eslint-disable-next-line no-shadow
@@ -42,7 +43,7 @@ const Loader = ({ color, size, ballSize }) => {
     <Container position='relative' width={size} height={size}>
       {ballsCount.map((i) => (
         <BallContainer key={i} delay={i}>
-          <Ball width={ballSize} height={ballSize} bg={color} />
+          <Ball ballSize={ballSize} bg={color} />
         </BallContainer>
       ))}
     </Container>
@@ -52,7 +53,7 @@ const Loader = ({ color, size, ballSize }) => {
 Loader.defaultProps = {
   color: 'indigo.0',
   size: 4,
-  ballSize: 1
+  ballSize: 6
 };
 
 Loader.propTypes = {
