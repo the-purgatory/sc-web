@@ -4,7 +4,7 @@
  * minLength Val
  * @param  value
  * @param  minLength
- * @return boolean
+ * @return
  */
 const minLengthValidator = (value, minLength) => {
   return value.length >= minLength;
@@ -14,7 +14,7 @@ const minLengthValidator = (value, minLength) => {
  * maxLength Val
  * @param  value
  * @param  maxLength
- * @return boolean
+ * @return
  */
 const maxLengthValidator = (value, maxLength) => {
   return value.length <= maxLength;
@@ -24,20 +24,28 @@ const maxLengthValidator = (value, maxLength) => {
  * email Val
  * @param  value
  * @param  isEmail
- * @return boolean
+ * @return
  */
-const isEmailValidator = (value) => {
-  const pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/gi;
-  return !value || !pattern.test(value);
+const isEmailValidator = (value, isEmail) => {
+  const patt = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/gi;
+  if (isEmail) {
+    return value && patt.test(value);
+  }
+  // why would I want to check if it's not a valid email??????? WTF????/
+  return !value || !patt.test(value);
 };
 
-const useValidator = (value, rules) => {
+const Validator = (value, rules) => {
+  const rulesKeys = Object.keys(rules);
   let isValid = true;
-  for (let i = 0; i < rules.length; i += 1) {
-    const rule = rules[i];
+
+  let i = 0;
+  while (isValid && rulesKeys[i]) {
+    const rule = rulesKeys[i];
+    const ruleValue = rules[rule];
     switch (rule) {
       case 'minLength': {
-        isValid = isValid && minLengthValidator(value, rules[rule]);
+        isValid = isValid && minLengthValidator(value, ruleValue);
         break;
       }
       case 'isRequired': {
@@ -45,18 +53,18 @@ const useValidator = (value, rules) => {
         break;
       }
       case 'maxLength': {
-        isValid = isValid && maxLengthValidator(value, rules[rule]);
+        isValid = isValid && maxLengthValidator(value, ruleValue);
         break;
       }
       case 'isEmail': {
-        isValid = isValid && isEmailValidator(value, rules[rule]);
+        isValid = isValid && isEmailValidator(value, ruleValue);
         break;
       }
       default:
     }
+    i += 1;
   }
-
-  return [isValid];
+  return isValid;
 };
 
-export default useValidator;
+export default Validator;

@@ -33,10 +33,20 @@ const InputElement = styled.input`
     cursor: not-allowed;
     background: ${themeGet('colors.white.2')};
   }
+
+  ${(props) =>
+    !props.isValid &&
+    `
+      border: solid 1px ${themeGet('colors.red.0')(props)}!important;
+      background: transparent;
+    `}
 `;
 
 const Input = React.forwardRef(
-  ({ label, inputProps: { onChange, ...inputProps }, ...rest }, ref) => {
+  (
+    { label, isValid, inputProps: { onChange, ...inputProps }, ...rest },
+    ref
+  ) => {
     return (
       <Label {...rest}>
         {label ? (
@@ -47,6 +57,7 @@ const Input = React.forwardRef(
         <InputElement
           ref={ref}
           onChange={(e) => onChange(e.target.value)}
+          isValid={isValid}
           {...inputProps}
         />
       </Label>
@@ -58,6 +69,7 @@ Input.displayName = 'Input';
 
 Input.propTypes = {
   label: PropTypes.string,
+  isValid: PropTypes.bool,
   inputProps: PropTypes.objectOf({
     value: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
