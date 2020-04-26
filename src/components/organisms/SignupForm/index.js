@@ -3,61 +3,179 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 
+import Validator from '__UTILS/validator';
 import { Input, Button, LinkButton, Seperator, Box } from '__COMPONENTS/atoms';
 
 const Form = styled.form`
   width: 100%;
 `;
 
+const VALIDATION_RULES = {
+  username: {
+    isRequired: true,
+    minLength: 3,
+    maxLength: 15
+  },
+  password: {
+    minLength: 6,
+    maxLength: 15,
+    isRequired: true
+  },
+  email: {
+    isRequired: true,
+    isEmail: true
+  },
+  phone: {
+    minLength: 10,
+    maxLength: 10,
+    isRequired: true
+  }
+};
+
+/**
+ *
+ * @todo if field is not required
+ * - we still need to change it once to validate
+ * - or we can set initial validation value to true
+ * - then what is the requirement for it to be in Validator
+ *
+ * @todo Scope this functionality out
+ */
 const SignupForm = ({ onShowLoader }) => {
   const [username, setUsername] = useState('');
+  const [isValidUsername, setIsValidUsername] = useState(false);
+
   const [password, setPassword] = useState('');
-  const [passwordRepeat, setPasswordRepeat] = useState('');
+  const [isValidPassword, setIsValidPassword] = useState(false);
+
+  const [email, setEmail] = useState('');
+  const [isValidEmail, setIsValidEmail] = useState(false);
+
+  const [phone, setPhone] = useState('');
+  const [isValidPhone, setIsValidPhone] = useState(false);
+
+  const [showError, setShowError] = useState(false);
+
   const history = useHistory();
+  const changeView = () => history.push('?main_panel=sign_in');
+
+  const onChange = (val, type) => {
+    switch (type) {
+      case 'username': {
+        setUsername(val);
+        setIsValidUsername(Validator(val, VALIDATION_RULES.username));
+        break;
+      }
+      case 'password': {
+        setPassword(val);
+        setIsValidPassword(Validator(val, VALIDATION_RULES.password));
+        break;
+      }
+      case 'email': {
+        setEmail(val);
+        setIsValidEmail(Validator(val, VALIDATION_RULES.email));
+        break;
+      }
+      case 'phone': {
+        setPhone(val);
+        setIsValidPhone(Validator(val, VALIDATION_RULES.phone));
+        break;
+      }
+      default:
+    }
+  };
+
+  const onBlur = (type) => {
+    switch (type) {
+      case 'username': {
+        setIsValidUsername(Validator(username, VALIDATION_RULES.username));
+        break;
+      }
+      case 'password': {
+        setIsValidPassword(Validator(password, VALIDATION_RULES.password));
+        break;
+      }
+      case 'email': {
+        setIsValidEmail(Validator(email, VALIDATION_RULES.email));
+        break;
+      }
+      case 'phone': {
+        setIsValidPhone(Validator(phone, VALIDATION_RULES.phone));
+        break;
+      }
+      default:
+    }
+  };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    e.stopPropagation();
+
+    if (!isValidUsername || !isValidPassword) {
+      setShowError(true);
+      return;
+    }
 
     console.log(username, password);
     onShowLoader && onShowLoader();
   };
-
-  const changeView = () => history.push('?main_panel=sign_in');
 
   return (
     <Box width={30}>
       <Form onSubmit={onSubmit}>
         <Input
           label='Username'
+          isValid={showError ? isValidUsername : true}
           inputProps={{
+            name: 'username',
             value: username,
             type: 'text',
-            onChange: setUsername,
-            autoFocus: true,
-            autoFill: false
+            onChange: (val) => onChange(val, 'username'),
+            onFocus: () => setShowError(false),
+            onBlur: () => onBlur('username'),
+            autoFocus: true
           }}
           mb={3}
         />
         <Input
           label='Password'
+          isValid={showError ? isValidPassword : true}
           inputProps={{
+            name: 'password',
             value: password,
             type: 'password',
-            onChange: setPassword
+            onChange: (val) => onChange(val, 'password'),
+            onFocus: () => setShowError(false),
+            onBlur: () => onBlur('password')
           }}
           mb={4}
         />
         <Input
-          label='Retype Password'
+          label='Email'
+          isValid={showError ? isValidEmail : true}
           inputProps={{
-            value: passwordRepeat,
-            type: 'password',
-            onChange: setPasswordRepeat
+            name: 'email',
+            value: email,
+            type: 'email',
+            onChange: (val) => onChange(val, 'email'),
+            onFocus: () => setShowError(false),
+            onBlur: () => onBlur('email')
           }}
-          mb={4}
+          mb={3}
         />
-        <Button text='Sign In' onClick={onSubmit} minWidth={15} />
+        <Input
+          label='Phone'
+          isValid={showError ? isValidPhone : true}
+          inputProps={{
+            name: 'phone',
+            value: phone,
+            type: 'tel',
+            onChange: (val) => onChange(val, 'phone'),
+            onFocus: () => setShowError(false),
+            onBlur: () => onBlur('phone')
+          }}
+          mb={3}
+        />
+        <Button text='Sign Up' onClick={onSubmit} minWidth={15} />
       </Form>
       <Seperator lineColor='indigo.2' text='or' />
       <LinkButton text='Sign In' onClick={changeView} />

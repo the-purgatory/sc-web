@@ -34,19 +34,43 @@ const VALIDATION_RULES = {
 const SigninForm = ({ onShowLoader }) => {
   const [username, setUsername] = useState('');
   const [isValidUsername, setIsValidUsername] = useState(false);
+
   const [password, setPassword] = useState('');
   const [isValidPassword, setIsValidPassword] = useState(false);
-  const [showError, setShowError] = useState(false);
-  const history = useHistory();
 
-  const onChangeUsername = (val) => {
-    setUsername(val);
-    setIsValidUsername(Validator(username, VALIDATION_RULES.username));
+  const [showError, setShowError] = useState(false);
+
+  const history = useHistory();
+  const changeView = () => history.push('?main_panel=sign_up');
+
+  const onChange = (val, type) => {
+    switch (type) {
+      case 'username': {
+        setUsername(val);
+        setIsValidUsername(Validator(val, VALIDATION_RULES.username));
+        break;
+      }
+      case 'password': {
+        setPassword(val);
+        setIsValidPassword(Validator(val, VALIDATION_RULES.password));
+        break;
+      }
+      default:
+    }
   };
 
-  const onChangePassword = (val) => {
-    setPassword(val);
-    setIsValidPassword(Validator(password, VALIDATION_RULES.password));
+  const onBlur = (type) => {
+    switch (type) {
+      case 'username': {
+        setIsValidUsername(Validator(username, VALIDATION_RULES.username));
+        break;
+      }
+      case 'password': {
+        setIsValidPassword(Validator(password, VALIDATION_RULES.password));
+        break;
+      }
+      default:
+    }
   };
 
   const onSubmit = (e) => {
@@ -61,19 +85,18 @@ const SigninForm = ({ onShowLoader }) => {
     onShowLoader && onShowLoader();
   };
 
-  const changeView = () => history.push('?main_panel=sign_up');
-
   return (
     <Box width={30}>
       <Form onSubmit={onSubmit}>
         <Input
-          label='Username'
+          label='Email'
           isValid={showError ? isValidUsername : true}
           inputProps={{
             value: username,
-            type: 'text',
-            onChange: onChangeUsername,
+            type: 'email',
+            onChange: (val) => onChange(val, 'username'),
             onFocus: () => setShowError(false),
+            onBlur: () => onBlur('username'),
             autoFocus: true
           }}
           mb={3}
@@ -84,7 +107,8 @@ const SigninForm = ({ onShowLoader }) => {
           inputProps={{
             value: password,
             type: 'password',
-            onChange: onChangePassword,
+            onChange: (val) => onChange(val, 'password'),
+            onBlur: () => onBlur('password'),
             onFocus: () => setShowError(false)
           }}
           mb={4}

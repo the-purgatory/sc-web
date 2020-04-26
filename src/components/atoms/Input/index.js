@@ -70,7 +70,7 @@ Input.displayName = 'Input';
 Input.propTypes = {
   label: PropTypes.string,
   isValid: PropTypes.bool,
-  inputProps: PropTypes.objectOf({
+  inputProps: PropTypes.shape({
     value: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
