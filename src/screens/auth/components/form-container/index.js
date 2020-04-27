@@ -1,24 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { useQuery } from '__UTILS';
-
-import { Loader, Box } from '__COMPONENTS/atoms';
+import { Box } from '__COMPONENTS/atoms';
 import { SigninForm, SignupForm } from '__COMPONENTS/organisms';
 
 const AuthForm = () => {
   const activeView = useQuery().get('main_panel');
-  const [loading, setLoading] = useState(false);
 
   let content = null;
   switch (activeView) {
     case 'sign_up':
-      content = <SignupForm onShowLoader={() => setLoading(true)} />;
+      content = <SignupForm />;
       break;
     default:
-      content = <SigninForm onShowLoader={() => setLoading(true)} />;
+      content = <SigninForm />;
   }
 
-  return <Box>{loading ? <Loader color='indigo.0' /> : content}</Box>;
+  return <Box>{content}</Box>;
 };
 
 export default AuthForm;

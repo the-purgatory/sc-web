@@ -1,10 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
+import { tryRegister } from '__STORE/auth/actions';
+
 import Validator from '__UTILS/validator';
-import { Input, Button, LinkButton, Seperator, Box } from '__COMPONENTS/atoms';
+
+import {
+  Input,
+  Button,
+  LinkButton,
+  ErrorBox,
+  Loader,
+  Seperator,
+  Box
+} from '__COMPONENTS/atoms';
 
 const Form = styled.form`
   width: 100%;
@@ -41,7 +53,7 @@ const VALIDATION_RULES = {
  *
  * @todo Scope this functionality out
  */
-const SignupForm = ({ onShowLoader }) => {
+const SignupForm = ({ error, isLoading, tryRegister }) => {
   const [username, setUsername] = useState('');
   const [isValidUsername, setIsValidUsername] = useState(false);
 
@@ -110,14 +122,31 @@ const SignupForm = ({ onShowLoader }) => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    if (!isValidUsername || !isValidPassword) {
+    if (
+      !isValidUsername ||
+      !isValidPassword ||
+      !isValidEmail ||
+      !isValidPhone
+    ) {
       setShowError(true);
       return;
     }
 
-    console.log(username, password);
-    onShowLoader && onShowLoader();
+    tryRegister({
+      username,
+      password,
+      email,
+      phone
+    });
   };
+
+  useEffect(() => {
+    setShowError(!!error);
+  }, [error]);
+
+  if (isLoading) {
+    return <Loader color='indigo.0' />;
+  }
 
   return (
     <Box width={30}>
@@ -176,6 +205,7 @@ const SignupForm = ({ onShowLoader }) => {
           mb={3}
         />
         <Button text='Sign Up' onClick={onSubmit} minWidth={15} />
+        {error && showError && <ErrorBox text={error} />}
       </Form>
       <Seperator lineColor='indigo.2' text='or' />
       <LinkButton text='Sign In' onClick={changeView} />
@@ -184,7 +214,19 @@ const SignupForm = ({ onShowLoader }) => {
 };
 
 SignupForm.propTypes = {
-  onShowLoader: PropTypes.func
+  tryRegister: PropTypes.func,
+  error: PropTypes.string,
+  isLoading: PropTypes.bool
 };
 
-export default SignupForm;
+const mapStateToProps = (state) => {
+  return state.auth;
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    tryRegister: (data) => dispatch(tryRegister(data))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignupForm);

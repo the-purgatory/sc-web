@@ -2,9 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
-// import dotenv from 'dotenv';
-// dotenv.config();
-
 import { ThemeProvider } from 'styled-components';
 
 import CommonStyle from '__STYLES/common';

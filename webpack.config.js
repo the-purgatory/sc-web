@@ -1,5 +1,15 @@
+const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const dotenv = require('dotenv');
+
+const env = dotenv.config().parsed;
+
+// reduce it to a nice object, the same as before
+const envKeys = Object.keys(env).reduce((prev, next) => {
+  prev[`process.env.${next}`] = JSON.stringify(env[next]);
+  return prev;
+}, {});
 
 module.exports = {
   entry: './src/index.js',
@@ -62,7 +72,8 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: 'src/index.html'
-    })
+    }),
+    new webpack.DefinePlugin(envKeys)
   ],
   devtool: 'source-map',
   optimization: {
@@ -81,6 +92,9 @@ module.exports = {
   devServer: {
     compress: true,
     // https://stackoverflow.com/questions/56573363/react-router-v4-nested-routes-not-work-with-webpack-dev-server
-    historyApiFallback: true
+    historyApiFallback: true,
+    proxy: {
+      '/api': env.BASE_URL
+    }
   }
 };
