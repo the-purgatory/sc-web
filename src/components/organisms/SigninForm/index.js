@@ -1,10 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
+import { tryLoggingIn } from '__STORE/auth/actions';
+
 import Validator from '__UTILS/validator';
-import { Input, Button, LinkButton, Seperator, Box } from '__COMPONENTS/atoms';
+
+import {
+  Input,
+  Button,
+  LinkButton,
+  Seperator,
+  Text,
+  Box
+} from '__COMPONENTS/atoms';
 
 const Form = styled.form`
   width: 100%;
@@ -31,7 +42,7 @@ const VALIDATION_RULES = {
  *
  * @todo Scope this functionality out
  */
-const SigninForm = ({ onShowLoader }) => {
+const SigninForm = ({ onShowLoader, error, isLoggingIn, tryLogginIn }) => {
   const [username, setUsername] = useState('');
   const [isValidUsername, setIsValidUsername] = useState(false);
 
@@ -42,6 +53,12 @@ const SigninForm = ({ onShowLoader }) => {
 
   const history = useHistory();
   const changeView = () => history.push('?main_panel=sign_up');
+
+  useEffect(() => {
+    if (isLoggingIn && onShowLoader) {
+      onShowLoader();
+    }
+  }, [isLoggingIn, onShowLoader]);
 
   const onChange = (val, type) => {
     switch (type) {
@@ -81,8 +98,10 @@ const SigninForm = ({ onShowLoader }) => {
       return;
     }
 
-    console.log(username, password);
-    onShowLoader && onShowLoader();
+    tryLogginIn({
+      username,
+      password
+    });
   };
 
   return (
@@ -114,6 +133,7 @@ const SigninForm = ({ onShowLoader }) => {
           mb={4}
         />
         <Button text='Sign In' onClick={onSubmit} minWidth={15} />
+        <Box>{error && <Text>{error}</Text>}</Box>
       </Form>
       <Seperator lineColor='indigo.2' text='or' />
       <LinkButton text='Sign Up' onClick={changeView} />
@@ -122,7 +142,20 @@ const SigninForm = ({ onShowLoader }) => {
 };
 
 SigninForm.propTypes = {
-  onShowLoader: PropTypes.func
+  onShowLoader: PropTypes.func,
+  tryLogginIn: PropTypes.func,
+  error: PropTypes.string,
+  isLoggingIn: PropTypes.bool
 };
 
-export default SigninForm;
+const mapStateToProps = (state) => {
+  return state.auth;
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    tryLogginIn: (data) => dispatch(tryLoggingIn(data))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SigninForm);
