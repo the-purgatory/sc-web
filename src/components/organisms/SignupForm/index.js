@@ -152,7 +152,6 @@ const SignupForm = ({ error, isLoading, tryRegister, switchPanel }) => {
             value: username,
             type: 'text',
             onChange: (val) => onChange(val, 'username'),
-            onFocus: () => setShowError(false),
             onBlur: () => onBlur('username'),
             autoFocus: true
           }}
@@ -166,7 +165,6 @@ const SignupForm = ({ error, isLoading, tryRegister, switchPanel }) => {
             value: password,
             type: 'password',
             onChange: (val) => onChange(val, 'password'),
-            onFocus: () => setShowError(false),
             onBlur: () => onBlur('password')
           }}
           mb={4}
@@ -179,7 +177,6 @@ const SignupForm = ({ error, isLoading, tryRegister, switchPanel }) => {
             value: email,
             type: 'email',
             onChange: (val) => onChange(val, 'email'),
-            onFocus: () => setShowError(false),
             onBlur: () => onBlur('email')
           }}
           mb={3}
@@ -192,7 +189,6 @@ const SignupForm = ({ error, isLoading, tryRegister, switchPanel }) => {
             value: phone,
             type: 'tel',
             onChange: (val) => onChange(val, 'phone'),
-            onFocus: () => setShowError(false),
             onBlur: () => onBlur('phone')
           }}
           mb={3}

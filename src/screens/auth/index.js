@@ -1,9 +1,11 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import themeGet from '@styled-system/theme-get';
 
-import { Text, Logo, FlexBox } from '__COMPONENTS/atoms';
+import { getUserData } from '__UTILS/auth';
 
+import { Text, Logo, FlexBox } from '__COMPONENTS/atoms';
 import FormContainer from './components/form-container';
 
 const Wrapper = styled(FlexBox)`
@@ -29,6 +31,11 @@ const LogoWrapper = styled(FlexBox)`
 `;
 
 const AuthScreen = () => {
+  const history = useHistory();
+  const useData = getUserData();
+  if (useData) {
+    history.push('/');
+  }
   return (
     <FlexBox
       flex='1'

@@ -110,7 +110,6 @@ const SigninForm = ({ error, isLoading, tryLogin, switchPanel }) => {
             value: username,
             type: 'email',
             onChange: (val) => onChange(val, 'username'),
-            onFocus: () => setShowError(false),
             onBlur: () => onBlur('username'),
             autoFocus: true
           }}
@@ -123,8 +122,7 @@ const SigninForm = ({ error, isLoading, tryLogin, switchPanel }) => {
             value: password,
             type: 'password',
             onChange: (val) => onChange(val, 'password'),
-            onBlur: () => onBlur('password'),
-            onFocus: () => setShowError(false)
+            onBlur: () => onBlur('password')
           }}
           mb={4}
         />
