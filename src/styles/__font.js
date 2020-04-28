@@ -9,10 +9,11 @@ export default {
   fontSizes: [10, 12, 14, 16, 20, 24, 32, 48, 64, 96].map(
     (elem) => `${elem}px`
   ),
-  fontWeights: [100, 400, 500, 700],
+  fontWeights: { light: 100, medium: 500, heavy: 700 },
   lineHeights: [1, 1.15, 1.3, 1.5],
   fonts: {
-    normal: "'Roboto', sans-serif",
+    normal: "'Raleway', sans-serif",
+    normal1: "'Roboto', sans-serif",
     mono: "'Roboto Mono', monospace",
     cursive1: "'Caveat', cursive",
     cursive2: "'Amatic SC', cursive",

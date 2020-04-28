@@ -1,4 +1,5 @@
-const BASE_URL = 'http://localhost:8000/';
+const BASE_URL = '';
+
 const Endpoints = {
   AUTH_URL: `${BASE_URL}api/v1/auth`,
   USER_URL: `${BASE_URL}api/v1/user`,

@@ -8,7 +8,7 @@ const Grid = styled.div`
   ${layout}
   ${color}
   ${grid}
-  display: flex;
+  display: grid;
 `;
 
 Grid.propTypes = {

@@ -10,7 +10,9 @@ export const getUserData = () => {
 };
 
 export const setUserData = (data) => {
-  localStorage.setItem('user_data', JSON.stringify(data));
+  if (data) {
+    localStorage.setItem('user_data', JSON.stringify(data));
+  }
 };
 
 export const clearUserData = () => {
