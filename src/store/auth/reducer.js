@@ -5,7 +5,8 @@ import {
   REGISTER_START,
   REGISTER_SUCCESS,
   REGISTER_FAIL,
-  LOGOUT_SUCCESS
+  LOGOUT_SUCCESS,
+  HIDE_ERRORS
 } from './types';
 
 const INITIAL_STATE = {
@@ -43,6 +44,11 @@ export default (state = INITIAL_STATE, action) => {
         error: null,
         userData: null,
         isLoading: false
+      };
+    case HIDE_ERRORS:
+      return {
+        ...state,
+        error: null
       };
     default:
       return state;

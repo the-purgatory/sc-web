@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { connect } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-
-import { tryRegister } from '__STORE/auth/actions';
 
 import Validator from '__UTILS/validator';
 
@@ -53,7 +49,7 @@ const VALIDATION_RULES = {
  *
  * @todo Scope this functionality out
  */
-const SignupForm = ({ error, isLoading, tryRegister }) => {
+const SignupForm = ({ error, isLoading, tryRegister, switchPanel }) => {
   const [username, setUsername] = useState('');
   const [isValidUsername, setIsValidUsername] = useState(false);
 
@@ -67,9 +63,6 @@ const SignupForm = ({ error, isLoading, tryRegister }) => {
   const [isValidPhone, setIsValidPhone] = useState(false);
 
   const [showError, setShowError] = useState(false);
-
-  const history = useHistory();
-  const changeView = () => history.push('?main_panel=sign_in');
 
   const onChange = (val, type) => {
     switch (type) {
@@ -208,25 +201,16 @@ const SignupForm = ({ error, isLoading, tryRegister }) => {
         {error && showError && <ErrorBox text={error} />}
       </Form>
       <Seperator lineColor='indigo.2' text='or' />
-      <LinkButton text='Sign In' onClick={changeView} />
+      <LinkButton text='Sign In' onClick={() => switchPanel('sign_in')} />
     </Box>
   );
 };
 
 SignupForm.propTypes = {
   tryRegister: PropTypes.func,
+  switchPanel: PropTypes.func,
   error: PropTypes.string,
   isLoading: PropTypes.bool
 };
 
-const mapStateToProps = (state) => {
-  return state.auth;
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    tryRegister: (data) => dispatch(tryRegister(data))
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(SignupForm);
+export default SignupForm;

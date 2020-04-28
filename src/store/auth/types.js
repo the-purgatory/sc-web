@@ -9,3 +9,5 @@ export const REGISTER_FAIL = 'AUTH__REGISTER_FAIL';
 export const LOGOUT_START = 'AUTH__LOGOUT_START';
 export const LOGOUT_SUCCESS = 'AUTH__LOGOUT_SUCCESS';
 export const LOGOUT_FAIL = 'AUTH__LOGOUT_FAIL';
+
+export const HIDE_ERRORS = 'AUTH__HIDE_ERRORS';

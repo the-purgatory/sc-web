@@ -10,7 +10,8 @@ import {
   REGISTER_START,
   REGISTER_SUCCESS,
   REGISTER_FAIL,
-  LOGOUT_SUCCESS
+  LOGOUT_SUCCESS,
+  HIDE_ERRORS
 } from './types';
 
 const triggerLoginStart = () => {
@@ -111,10 +112,16 @@ const triggerLogoutSuccess = () => {
   };
 };
 
+const hideErrors = () => {
+  return {
+    type: HIDE_ERRORS
+  };
+};
+
 const tryLogout = () => (dispatch) => {
   clearUserData();
   dispatch(triggerLogoutSuccess());
   useHistory().push('/auth');
 };
 
-export { tryLogin, tryRegister, tryLogout };
+export { tryLogin, tryRegister, tryLogout, hideErrors };
