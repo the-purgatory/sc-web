@@ -39,7 +39,13 @@ const VALIDATION_RULES = {
  *
  * @todo Scope this functionality out
  */
-const SigninForm = ({ error, isLoading, tryLogin, switchPanel }) => {
+const SigninForm = ({
+  error,
+  isLoading,
+  tryLogin,
+  switchPanel,
+  clearAPIErrors
+}) => {
   const [username, setUsername] = useState('');
   const [isValidUsername, setIsValidUsername] = useState(false);
 
@@ -82,6 +88,7 @@ const SigninForm = ({ error, isLoading, tryLogin, switchPanel }) => {
     e.preventDefault();
 
     if (!isValidUsername || !isValidPassword) {
+      clearAPIErrors();
       setShowError(true);
       return;
     }
@@ -138,6 +145,7 @@ const SigninForm = ({ error, isLoading, tryLogin, switchPanel }) => {
 SigninForm.propTypes = {
   tryLogin: PropTypes.func,
   switchPanel: PropTypes.func,
+  clearAPIErrors: PropTypes.func,
   error: PropTypes.string,
   isLoading: PropTypes.bool
 };

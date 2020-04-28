@@ -49,7 +49,13 @@ const VALIDATION_RULES = {
  *
  * @todo Scope this functionality out
  */
-const SignupForm = ({ error, isLoading, tryRegister, switchPanel }) => {
+const SignupForm = ({
+  error,
+  isLoading,
+  tryRegister,
+  switchPanel,
+  clearAPIErrors
+}) => {
   const [username, setUsername] = useState('');
   const [isValidUsername, setIsValidUsername] = useState(false);
 
@@ -121,6 +127,7 @@ const SignupForm = ({ error, isLoading, tryRegister, switchPanel }) => {
       !isValidEmail ||
       !isValidPhone
     ) {
+      clearAPIErrors();
       setShowError(true);
       return;
     }
@@ -205,6 +212,7 @@ const SignupForm = ({ error, isLoading, tryRegister, switchPanel }) => {
 SignupForm.propTypes = {
   tryRegister: PropTypes.func,
   switchPanel: PropTypes.func,
+  clearAPIErrors: PropTypes.func,
   error: PropTypes.string,
   isLoading: PropTypes.bool
 };

@@ -27,6 +27,7 @@ const AuthForm = ({ error, isLoading, hideErrors, tryLogin, tryRegister }) => {
           switchPanel={switchPanel}
           error={error}
           isLoading={isLoading}
+          clearAPIErrors={hideErrors}
         />
       );
       break;
@@ -37,6 +38,7 @@ const AuthForm = ({ error, isLoading, hideErrors, tryLogin, tryRegister }) => {
           switchPanel={switchPanel}
           error={error}
           isLoading={isLoading}
+          clearAPIErrors={hideErrors}
         />
       );
   }
