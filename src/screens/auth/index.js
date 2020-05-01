@@ -11,7 +11,6 @@ import FormContainer from './components/form-container';
 const Wrapper = styled(FlexBox)`
   background: ${themeGet('colors.white.0')};
   min-width: 80%;
-  width: 600px;
   height: 600px;
 `;
 
