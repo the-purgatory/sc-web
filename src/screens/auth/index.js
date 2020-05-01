@@ -8,12 +8,6 @@ import { getUserData } from '__UTILS/auth';
 import { Text, Logo, FlexBox } from '__COMPONENTS/atoms';
 import FormContainer from './components/form-container';
 
-const Wrapper = styled(FlexBox)`
-  background: ${themeGet('colors.white.0')};
-  min-width: 80%;
-  height: 600px;
-`;
-
 const LogoWrapper = styled(FlexBox)`
   position: relative;
   overflow: hidden;
@@ -26,6 +20,34 @@ const LogoWrapper = styled(FlexBox)`
     left: 0;
     right: 0;
     background: ${themeGet('colors.indigo.3')};
+  }
+`;
+
+const FormWrapper = styled(FlexBox)``;
+
+const Wrapper = styled(FlexBox)`
+  background: ${themeGet('colors.white.0')};
+  min-width: 80%;
+  min-height: 600px;
+
+  @media screen and (max-width: ${themeGet('breakpoints.1')}) {
+    min-width: 100%;
+    min-height: 100%;
+  }
+  @media screen and (max-width: ${themeGet('breakpoints.0')}) {
+    flex-direction: column;
+    ${LogoWrapper} {
+      padding-bottom: ${themeGet('sizes.12')};
+    }
+    ${FormWrapper} {
+      background: ${themeGet('colors.white.0')};
+      box-shadow: ${themeGet('shadows.large')};
+      border-radius: ${themeGet('radii.2')};
+      transform: translateY(-${themeGet('sizes.12')});
+      margin: 0 auto;
+      width: 80%;
+      min-width: ${themeGet('sizes.40')};
+    }
   }
 `;
 
@@ -53,9 +75,9 @@ const AuthScreen = () => {
             <Logo primaryColor='indigo.0' secondaryColor='indigo.2' />
           </FlexBox>
         </LogoWrapper>
-        <FlexBox alignItems='center' justifyContent='center' p={5} flex={1}>
+        <FormWrapper alignItems='center' justifyContent='center' p={5} flex={1}>
           <FormContainer />
-        </FlexBox>
+        </FormWrapper>
       </Wrapper>
     </FlexBox>
   );
