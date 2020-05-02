@@ -67,6 +67,10 @@ const Input = React.forwardRef(
 
 Input.displayName = 'Input';
 
+Input.defaultProps = {
+  isValid: true
+};
+
 Input.propTypes = {
   label: PropTypes.string,
   isValid: PropTypes.bool,

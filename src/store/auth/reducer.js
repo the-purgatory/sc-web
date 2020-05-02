@@ -11,10 +11,12 @@ import {
   HIDE_ERRORS
 } from './types';
 
+const userData = getUserData();
+
 const INITIAL_STATE = {
   isLoading: false,
   error: null,
-  data: getUserData()
+  data: userData
 };
 
 export default (state = INITIAL_STATE, action) => {

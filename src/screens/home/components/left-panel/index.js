@@ -4,25 +4,21 @@ import { Switch, Route, useRouteMatch } from 'react-router-dom';
 import { useQuery } from '__UTILS';
 
 import { Logo, Box, FlexBox } from '__COMPONENTS/atoms';
+import ChatFriends from './chatFriends';
 
 const PANEL_TYPES = {
-  CHAT_1: 'chat_1',
-  CHAT_2: 'chat_2',
-  DASHBOARD_1: 'dashboard_1',
-  DASHBOARD_2: 'dashboard_2'
+  PROFILE_VIEW: 'PROFILE_VIEW',
+  DASHBOARD_1: 'dashboard_1'
 };
 
 const getChatPanelComponent = (type) => {
   let component = null;
   switch (type) {
-    case PANEL_TYPES.CHAT_1:
-      component = <Box>Chat 1</Box>;
-      break;
-    case PANEL_TYPES.CHAT_2:
-      component = <Box>Chat 2</Box>;
+    case PANEL_TYPES.PROFILE_VIEW:
+      component = <Box>Profile View</Box>;
       break;
     default:
-      component = <Box>Default Chat</Box>;
+      component = <ChatFriends />;
   }
 
   return component ? (
@@ -40,9 +36,6 @@ const getDashboardPanelComponent = (type) => {
   switch (type) {
     case PANEL_TYPES.DASHBOARD_1:
       component = <Box>Dashboard 1</Box>;
-      break;
-    case PANEL_TYPES.DASHBOARD_2:
-      component = <Box>Dashboard 2</Box>;
       break;
     default:
       component = <Box>Default Dashboard</Box>;
