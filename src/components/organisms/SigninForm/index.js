@@ -19,7 +19,7 @@ const Form = styled.form`
 `;
 
 const VALIDATION_RULES = {
-  username: {
+  email: {
     isRequired: true,
     isEmail: true
   },
@@ -46,8 +46,8 @@ const SigninForm = ({
   switchPanel,
   clearAPIErrors
 }) => {
-  const [username, setUsername] = useState('');
-  const [isValidUsername, setIsValidUsername] = useState(false);
+  const [email, setEmail] = useState('');
+  const [isValidEmail, setIsValidEmail] = useState(false);
 
   const [password, setPassword] = useState('');
   const [isValidPassword, setIsValidPassword] = useState(false);
@@ -56,9 +56,9 @@ const SigninForm = ({
 
   const onChange = (val, type) => {
     switch (type) {
-      case 'username': {
-        setUsername(val);
-        setIsValidUsername(Validator(val, VALIDATION_RULES.username));
+      case 'email': {
+        setEmail(val);
+        setIsValidEmail(Validator(val, VALIDATION_RULES.email));
         break;
       }
       case 'password': {
@@ -72,8 +72,8 @@ const SigninForm = ({
 
   const onBlur = (type) => {
     switch (type) {
-      case 'username': {
-        setIsValidUsername(Validator(username, VALIDATION_RULES.username));
+      case 'email': {
+        setIsValidEmail(Validator(email, VALIDATION_RULES.email));
         break;
       }
       case 'password': {
@@ -87,14 +87,14 @@ const SigninForm = ({
   const onSubmit = (e) => {
     e.preventDefault();
 
-    if (!isValidUsername || !isValidPassword) {
+    if (!isValidEmail || !isValidPassword) {
       clearAPIErrors();
       setShowError(true);
       return;
     }
 
     tryLogin({
-      username,
+      email,
       password
     });
   };
@@ -112,12 +112,12 @@ const SigninForm = ({
       <Form onSubmit={onSubmit}>
         <Input
           label='Email'
-          isValid={showError ? isValidUsername : true}
+          isValid={showError ? isValidEmail : true}
           inputProps={{
-            value: username,
+            value: email,
             type: 'email',
-            onChange: (val) => onChange(val, 'username'),
-            onBlur: () => onBlur('username'),
+            onChange: (val) => onChange(val, 'email'),
+            onBlur: () => onBlur('email'),
             autoFocus: true
           }}
           mb={3}

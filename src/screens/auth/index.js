@@ -53,8 +53,8 @@ const Wrapper = styled(FlexBox)`
 
 const AuthScreen = () => {
   const history = useHistory();
-  const useData = getUserData();
-  if (useData) {
+  const userData = getUserData();
+  if (userData) {
     history.push('/');
   }
   return (

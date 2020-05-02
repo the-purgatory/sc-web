@@ -1,5 +1,3 @@
-import { useHistory } from 'react-router-dom';
-
 import Endpoints from '__CONSTANTS/endpoints';
 import { setUserData, clearUserData } from '__UTILS/auth';
 
@@ -51,6 +49,7 @@ const tryLogin = (data) => (dispatch) => {
       if (isSuccess) {
         setUserData(res.data);
         dispatch(triggerLoginSuccess(res.data));
+        window.location.href = '/';
       } else {
         dispatch(triggerLoginFail(res.error));
       }
@@ -97,6 +96,7 @@ const tryRegister = (data) => (dispatch) => {
       if (isSuccess) {
         setUserData(res.data);
         dispatch(triggerRegisterSuccess(res.data));
+        window.location.href = '/';
       } else {
         dispatch(triggerRegisterFail(res.error));
       }
@@ -119,9 +119,23 @@ const hideErrors = () => {
 };
 
 const tryLogout = () => (dispatch) => {
-  clearUserData();
-  dispatch(triggerLogoutSuccess());
-  useHistory().push('/auth');
+  fetch(`${Endpoints.AUTH_URL}/logout`, {
+    method: 'POST',
+    credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+    .then(() => {
+      dispatch(triggerLogoutSuccess());
+      clearUserData();
+      window.location.href = '/auth';
+    })
+    .catch(() => {
+      dispatch(triggerLogoutSuccess());
+      clearUserData();
+      window.location.href = '/auth';
+    });
 };
 
 export { tryLogin, tryRegister, tryLogout, hideErrors };
