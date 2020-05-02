@@ -10,7 +10,8 @@
 
 ## TODOs for later
 
-- https://scotch.io/tutorials/using-font-awesome-5-with-react
+[1] Setup [font icons](https://scotch.io/tutorials/using-font-awesome-5-with-react)
+[2] Setup [client middleware](https://github.com/erikras/react-redux-universal-hot-example/blob/master/src/redux/middleware/clientMiddleware.js)
 
 All the docs are referenced below -
 
