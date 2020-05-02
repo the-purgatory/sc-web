@@ -2,7 +2,7 @@ const THEME_LENGTH = 50;
 const SIZE_MIN = 8;
 const SPACE_MIN = 4;
 
-const breakpoint = [320, 768, 1024, 1280, 1440].map((elem) => `${elem}px`);
+const breakpoints = [768, 1024, 1280].map((elem) => `${elem}px`);
 
 const sizes = Array.from(Array(THEME_LENGTH))
   .map((el, index) => SIZE_MIN * index)
@@ -19,7 +19,7 @@ const space = Array.from(Array(THEME_LENGTH))
 // const space = [0, 4, 8, 16, 32, 64, 128, 256, 512].map((elem) => `${elem}px`);
 
 export default {
-  breakpoint,
+  breakpoints,
   sizes,
   space
   // widths

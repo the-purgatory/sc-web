@@ -1,3 +1,5 @@
+import { getUserData } from '__UTILS/auth';
+
 import {
   LOGIN_START,
   LOGIN_SUCCESS,
@@ -12,7 +14,7 @@ import {
 const INITIAL_STATE = {
   isLoading: false,
   error: null,
-  userData: null
+  data: getUserData()
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -29,7 +31,7 @@ export default (state = INITIAL_STATE, action) => {
     case REGISTER_SUCCESS:
       return {
         ...state,
-        userData: payload,
+        data: payload,
         isLoading: false
       };
     case LOGIN_FAIL:
@@ -42,7 +44,7 @@ export default (state = INITIAL_STATE, action) => {
     case LOGOUT_SUCCESS:
       return {
         error: null,
-        userData: null,
+        data: null,
         isLoading: false
       };
     case HIDE_ERRORS:

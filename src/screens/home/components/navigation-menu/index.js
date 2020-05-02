@@ -1,6 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import themeGet from '@styled-system/theme-get';
+
+import { tryLogout } from '__STORE/auth/actions';
 
 import { FontIcon, FlexBox, Box } from '__COMPONENTS/atoms';
 import { Avatar } from '__COMPONENTS/molecules';
@@ -23,7 +27,7 @@ const NavLink = styled(FlexBox)`
   }
 `;
 
-export default function NavigationMenu() {
+const NavigationMenu = ({ tryLogout }) => {
   return (
     <NavigationContainer
       width={7}
@@ -45,7 +49,7 @@ export default function NavigationMenu() {
         <NavLink>
           <FontIcon className='far fa-bell' color='black.3' fontSize={3} />
         </NavLink>
-        <NavLink>
+        <NavLink onClick={tryLogout}>
           <FontIcon className='fas fa-power-off' color='black.3' fontSize={3} />
         </NavLink>
         <NavLink>
@@ -54,4 +58,16 @@ export default function NavigationMenu() {
       </Box>
     </NavigationContainer>
   );
-}
+};
+
+NavigationMenu.propTypes = {
+  tryLogout: PropTypes.func
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    tryLogout: () => dispatch(tryLogout())
+  };
+};
+
+export default connect(null, mapDispatchToProps)(NavigationMenu);
