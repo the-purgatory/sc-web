@@ -1,3 +1,5 @@
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable no-param-reassign */
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -37,18 +39,7 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: 'babel-loader'
-        // use: {
-        //   loader: 'babel-loader',
-        //   options: {
-        //     presets: ['@babel/preset-env']
-        //   }
-        // }
       },
-      //   {
-      //     test: /\.(css|scss)$/,
-      //     exclude: /node_modules/,
-      //     use: ['style-loader', 'css-loader', 'sass-loader']
-      //   },
       // {
       //   test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
       //   exclude: /node_modules/,
@@ -75,6 +66,7 @@ module.exports = {
     }),
     new webpack.DefinePlugin(envKeys)
   ],
+  // devtool: none or 'source-map',
   devtool: 'source-map',
   optimization: {
     moduleIds: 'hashed',
@@ -93,6 +85,7 @@ module.exports = {
     compress: true,
     // https://stackoverflow.com/questions/56573363/react-router-v4-nested-routes-not-work-with-webpack-dev-server
     historyApiFallback: true,
+    hot: true,
     proxy: {
       '/api': env.BASE_URL
     }

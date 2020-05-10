@@ -7,11 +7,11 @@ import {
   CHANGE_ACTIVE_FRIEND
 } from './types';
 
-const userData = getUserData();
-
 const INITIAL_STATE = {
   activeFriend: null,
   friendsList: [],
+  pinnedList: [],
+  blockedList: [],
   error: null,
   isLoading: false
 };
@@ -38,10 +38,33 @@ export default (state = INITIAL_STATE, action) => {
       };
     }
     case FETCH_FRIENDS_SUCCESS: {
-      const friends = payload.filter((user) => user._id !== userData._id);
+      const userData = getUserData();
+
+      /**
+       * All friends
+       * Favourites
+       * Blocked
+       * Recent [Pinned + unpinned]
+       */
+      const { friendsList, pinnedList, blockedList } = payload.reduce(
+        (acc, user) => {
+          if (userData.blocked_users.indexOf(user._id) !== -1) {
+            acc.blockedList.push(user);
+          } else if (userData.pinned_users.indexOf(user._id) !== -1) {
+            acc.pinnedList.push(user);
+          } else {
+            acc.friendsList.push(user);
+          }
+          return acc;
+        },
+        { friendsList: [], pinnedList: [], blockedList: [] }
+      );
+
       return {
         ...state,
-        friendsList: friends,
+        friendsList,
+        pinnedList,
+        blockedList,
         isLoading: false
       };
     }

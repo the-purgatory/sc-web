@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import { tryLogin, tryRegister, hideErrors } from '__STORE/auth/actions';
-import { useQuery } from '__UTILS';
+import { useQuery } from '__UTILS/hooks';
 
 import { Box } from '__COMPONENTS/atoms';
 import { SigninForm, SignupForm } from '__COMPONENTS/organisms';

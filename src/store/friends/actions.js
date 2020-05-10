@@ -30,13 +30,12 @@ export const fetchFriendsError = (data) => {
 export const tryFetchingAllFriends = (data) => (dispatch) => {
   dispatch(fetchFriendsProgress());
 
-  fetch(`${Endpoints.USER_URL}`, {
+  fetch(`${Endpoints.USER_URL}/all_friends?id=${data.id}`, {
     method: 'GET',
     credentials: 'include',
     headers: {
       'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
+    }
   })
     .then((res) => res.json())
     .then((res) => {

@@ -9,6 +9,22 @@ const FlexBox = styled.div`
   ${color}
   ${flexbox}
   display: flex;
+  ${(props) =>
+    props.hc &&
+    `
+    align-items: center;
+  `}
+  ${(props) =>
+    props.vc &&
+    `
+    justify-content: center;
+  `}
+  ${(props) =>
+    props.ac &&
+    `
+    align-items: center;
+    justify-content: center;
+  `}
 `;
 
 FlexBox.propTypes = {

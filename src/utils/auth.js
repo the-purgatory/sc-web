@@ -1,6 +1,6 @@
 import { getCookie } from './cookies';
 
-export const getUserData = () => {
+const getUserData = () => {
   try {
     const userToken = getCookie('app_token');
     return userToken && JSON.parse(localStorage.getItem('user_data'));
@@ -9,18 +9,20 @@ export const getUserData = () => {
   }
 };
 
-export const setUserData = (data) => {
+const setUserData = (data) => {
   if (data) {
     localStorage.setItem('user_data', JSON.stringify(data));
   }
 };
 
-export const clearUserData = () => {
+const clearUserData = () => {
   localStorage.removeItem('user_data');
 };
 
-export const isUserLoggedIn = () => {
+const isUserLoggedIn = () => {
   const userData = getUserData();
   const userToken = getCookie('app_token');
   return !!(userData && userToken);
 };
+
+export { getUserData, setUserData, clearUserData, isUserLoggedIn };

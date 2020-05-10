@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { getUserData, clearUserData } from '__UTILS/auth';
 
 import { FlexBox } from '__COMPONENTS/atoms';
+import { ErrorBoundary } from '__COMPONENTS/organisms';
 
 import NavigationMenu from './components/navigation-menu';
 import LeftPanel from './components/left-panel';
@@ -17,12 +18,14 @@ const HomeScreen = () => {
     history.push('/auth');
   }
   return (
-    <FlexBox flex={1}>
-      <NavigationMenu />
-      <LeftPanel />
-      <ContentPanel />
-      <RightPanel />
-    </FlexBox>
+    <ErrorBoundary>
+      <FlexBox flex={1}>
+        <NavigationMenu />
+        <LeftPanel />
+        <ContentPanel />
+        <RightPanel />
+      </FlexBox>
+    </ErrorBoundary>
   );
 };
 

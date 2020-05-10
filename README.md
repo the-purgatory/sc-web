@@ -13,6 +13,9 @@
 [*] Forgot Password
 [*] Setup [font icons](https://scotch.io/tutorials/using-font-awesome-5-with-react)
 [*] Setup [client middleware](https://github.com/erikras/react-redux-universal-hot-example/blob/master/src/redux/middleware/clientMiddleware.js)
+[*] Need API middleware to log, cancel, handle redirects on 401, etc.
+[*] Need Logger middleware for redux
+[*] Need Logger middleware for errors
 
 All the docs are referenced below -
 

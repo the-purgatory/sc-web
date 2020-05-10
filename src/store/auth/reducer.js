@@ -8,6 +8,9 @@ import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
   LOGOUT_SUCCESS,
+  FETCH_USER_DATA_START,
+  FETCH_USER_DATA_SUCCESS,
+  FETCH_USER_DATA_FAIL,
   HIDE_ERRORS
 } from './types';
 
@@ -24,6 +27,7 @@ export default (state = INITIAL_STATE, action) => {
   switch (type) {
     case LOGIN_START:
     case REGISTER_START:
+    case FETCH_USER_DATA_START:
       return {
         ...state,
         isLoading: true,
@@ -31,6 +35,7 @@ export default (state = INITIAL_STATE, action) => {
       };
     case LOGIN_SUCCESS:
     case REGISTER_SUCCESS:
+    case FETCH_USER_DATA_SUCCESS:
       return {
         ...state,
         data: payload,
@@ -38,6 +43,7 @@ export default (state = INITIAL_STATE, action) => {
       };
     case LOGIN_FAIL:
     case REGISTER_FAIL:
+    case FETCH_USER_DATA_FAIL:
       return {
         ...state,
         error: payload,
