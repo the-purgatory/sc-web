@@ -1,16 +1,30 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
+import themeGet from '@styled-system/theme-get';
 
 import { getUserData } from '__UTILS/auth';
 import { tryFetchingAllFriends } from '__STORE/friends/actions';
 
-import { Box } from '__COMPONENTS/atoms';
+import { FontIcon, FlexBox } from '__COMPONENTS/atoms';
 import {
   AllFriendsList,
+  BlockedList,
   FavouriteFriendsList,
   RecentFriendsList
 } from '__COMPONENTS/organisms';
+
+const IconContainer = styled(FlexBox)`
+  ${'' /* border-top: solid 1px ${themeGet('colors.white.2')}; */}
+  background-color: ${themeGet('colors.white.1')};
+  cursor: pointer;
+  ${(props) =>
+    props.active &&
+    `
+    background-color: ${themeGet('colors.white.0')(props)};
+  `}
+`;
 
 const ChatFriends = ({
   fetchAllFriends,
@@ -21,6 +35,8 @@ const ChatFriends = ({
   error,
   isLoading
 }) => {
+  const [activeView, setActiveView] = useState('recent-view');
+
   useEffect(() => {
     const userData = getUserData();
     fetchAllFriends({ id: userData._id });
@@ -35,15 +51,55 @@ const ChatFriends = ({
   }
 
   return (
-    <Box width='100%'>
-      <FavouriteFriendsList data={blockedList} />
-      <RecentFriendsList
-        friends={friendsList}
-        pinned={pinnedList}
-        activeFriend={activeFriend}
-      />
-      <AllFriendsList data={friendsList} />
-    </Box>
+    <FlexBox flexDirection='column' width='100%' flex={1}>
+      <FlexBox flexDirection='column' flex={1}>
+        {activeView === 'recent-view' && (
+          <>
+            <FavouriteFriendsList data={friendsList} />
+            <RecentFriendsList
+              friends={friendsList}
+              pinned={pinnedList}
+              activeFriend={activeFriend}
+            />
+          </>
+        )}
+        {activeView === 'all-view' && <AllFriendsList data={friendsList} />}
+        {activeView === 'blocked-view' && <BlockedList data={blockedList} />}
+      </FlexBox>
+      <FlexBox>
+        <IconContainer
+          ac
+          flex={1}
+          p={4}
+          active={activeView === 'recent-view'}
+          onClick={() => setActiveView('recent-view')}
+        >
+          <FontIcon color='light' fontSize={3} className='fas fa-history' />
+        </IconContainer>
+        <IconContainer
+          ac
+          flex={1}
+          p={4}
+          active={activeView === 'all-view'}
+          onClick={() => setActiveView('all-view')}
+        >
+          <FontIcon
+            color='light'
+            fontSize={3}
+            className='fas fa-address-book'
+          />
+        </IconContainer>
+        <IconContainer
+          ac
+          flex={1}
+          p={4}
+          active={activeView === 'blocked-view'}
+          onClick={() => setActiveView('blocked-view')}
+        >
+          <FontIcon color='light' fontSize={3} className='fas fa-ban' />
+        </IconContainer>
+      </FlexBox>
+    </FlexBox>
   );
 };
 
