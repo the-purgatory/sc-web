@@ -42,7 +42,7 @@ const getStatusDom = (isActive) => {
   );
 };
 
-const FavouriteItem = ({ data, itemWidth, ...props }) => {
+const ListItem = ({ data, itemWidth, ...props }) => {
   const statusDom = useCallback(getStatusDom(data.is_active), [data.is_active]);
   return (
     <ItemWrapper px={4} py={4} ml={4} width={itemWidth} {...props}>
@@ -65,7 +65,7 @@ const FavouriteItem = ({ data, itemWidth, ...props }) => {
   );
 };
 
-FavouriteItem.propTypes = {
+ListItem.propTypes = {
   data: PropTypes.shape({
     _id: PropTypes.string,
     is_active: PropTypes.bool,
@@ -77,4 +77,4 @@ FavouriteItem.propTypes = {
   itemWidth: PropTypes.number
 };
 
-export default FavouriteItem;
+export default ListItem;

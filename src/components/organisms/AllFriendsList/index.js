@@ -31,8 +31,10 @@ const AllFriendsList = ({ data }) => {
   }
   return (
     <Box>
-      <Box px={4}>All Friends</Box>
-      <Box px={4} py={4}>
+      <Text fontWeight='heavy' px={4} mb={4}>
+        All Friends
+      </Text>
+      <Box px={4} mb={4}>
         <Input
           backgroundColor='white.1'
           borderColor='white.3'

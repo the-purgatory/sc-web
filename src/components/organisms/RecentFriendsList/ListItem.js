@@ -16,7 +16,7 @@ const ItemWrapper = styled(FlexBox)`
   ${(props) => props.isActive && `background: ${themeGet('colors.white.2')};`}
 `;
 
-const RecentItem = ({ data, pinned, ...props }) => {
+const ListItem = ({ data, pinned, ...props }) => {
   return (
     <ItemWrapper px={4} py={2} width='100%' alignItems='center' {...props}>
       <Avatar
@@ -40,7 +40,7 @@ const RecentItem = ({ data, pinned, ...props }) => {
   );
 };
 
-RecentItem.propTypes = {
+ListItem.propTypes = {
   data: PropTypes.shape({
     _id: PropTypes.string,
     is_active: PropTypes.bool,
@@ -52,4 +52,4 @@ RecentItem.propTypes = {
   pinned: PropTypes.bool
 };
 
-export default RecentItem;
+export default ListItem;
