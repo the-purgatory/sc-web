@@ -64,7 +64,7 @@
     "socket.io-client": "^2.3.0",
     "styled-components": "^5.1.1",
     "styled-system": "^5.1.5",
-    "snyk": "^1.316.2"
+    "snyk": "^1.425.4"
   },
   "husky": {
     "hooks": {
