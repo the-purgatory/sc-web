@@ -35,7 +35,7 @@ const isEmailValidator = (value, isEmail) => {
   return !value || !patt.test(value);
 };
 
-const Validator = (value, rules) => {
+const validator = (value, rules) => {
   const rulesKeys = Object.keys(rules);
   let isValid = true;
 
@@ -67,4 +67,5 @@ const Validator = (value, rules) => {
   return isValid;
 };
 
-export default Validator;
+// eslint-disable-next-line import/prefer-default-export
+export { validator };

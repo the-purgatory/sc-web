@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import Validator from '__UTILS/validator';
+import { validator } from '__UTILS/form';
 
 import {
   Input,
@@ -35,7 +35,7 @@ const VALIDATION_RULES = {
  * @todo if field is not required
  * - we still need to change it once to validate
  * - or we can set initial validation value to true
- * - then what is the requirement for it to be in Validator
+ * - then what is the requirement for it to be in validator
  *
  * @todo Scope this functionality out
  */
@@ -58,12 +58,12 @@ const SigninForm = ({
     switch (type) {
       case 'email': {
         setEmail(val);
-        setIsValidEmail(Validator(val, VALIDATION_RULES.email));
+        setIsValidEmail(validator(val, VALIDATION_RULES.email));
         break;
       }
       case 'password': {
         setPassword(val);
-        setIsValidPassword(Validator(val, VALIDATION_RULES.password));
+        setIsValidPassword(validator(val, VALIDATION_RULES.password));
         break;
       }
       default:
@@ -73,11 +73,11 @@ const SigninForm = ({
   const onBlur = (type) => {
     switch (type) {
       case 'email': {
-        setIsValidEmail(Validator(email, VALIDATION_RULES.email));
+        setIsValidEmail(validator(email, VALIDATION_RULES.email));
         break;
       }
       case 'password': {
-        setIsValidPassword(Validator(password, VALIDATION_RULES.password));
+        setIsValidPassword(validator(password, VALIDATION_RULES.password));
         break;
       }
       default:

@@ -1,22 +1,8 @@
-import { useRef, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import common from './common';
+import auth from './auth';
+import cookies from './cookies';
+import hooks from './hooks';
+import image from './image';
+import form from './form';
 
-const useIsMounted = () => {
-  const isMounted = useRef(false);
-  useEffect(() => {
-    isMounted.current = true;
-    return () => {
-      isMounted.current = false;
-    };
-  }, []);
-  return isMounted;
-};
-
-export function useQuery() {
-  return new URLSearchParams(useLocation().search);
-}
-
-export default {
-  useQuery,
-  useIsMounted
-};
+export default { ...common, ...auth, ...cookies, ...hooks, ...image, ...form };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route, useRouteMatch } from 'react-router-dom';
 
-import { useQuery } from '__UTILS';
+import { useQuery } from '__UTILS/hooks';
 
 import { Box, FlexBox } from '__COMPONENTS/atoms';
 

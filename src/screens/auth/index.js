@@ -6,6 +6,8 @@ import themeGet from '@styled-system/theme-get';
 import { getUserData } from '__UTILS/auth';
 
 import { Text, Logo, FlexBox } from '__COMPONENTS/atoms';
+import { ErrorBoundary } from '__COMPONENTS/organisms';
+
 import FormContainer from './components/form-container';
 
 const LogoWrapper = styled(FlexBox)`
@@ -58,28 +60,35 @@ const AuthScreen = () => {
     history.push('/');
   }
   return (
-    <FlexBox
-      flex='1'
-      flexDirection='column'
-      alignItems='center'
-      justifyContent='center'
-    >
-      <Wrapper alignItems='stretch'>
-        <LogoWrapper flexDirection='column' bg='indigo.2' p={5} flex={1}>
-          <FlexBox justifyContent='flex-end'>
-            <Text fontSize={3} fontWeight='heavy' color='indigo.0'>
-              /the-purgatory
-            </Text>
-          </FlexBox>
-          <FlexBox flex={1} alignItems='center' justifyContent='center'>
-            <Logo primaryColor='indigo.0' secondaryColor='indigo.2' />
-          </FlexBox>
-        </LogoWrapper>
-        <FormWrapper alignItems='center' justifyContent='center' p={5} flex={1}>
-          <FormContainer />
-        </FormWrapper>
-      </Wrapper>
-    </FlexBox>
+    <ErrorBoundary>
+      <FlexBox
+        flex='1'
+        flexDirection='column'
+        alignItems='center'
+        justifyContent='center'
+      >
+        <Wrapper alignItems='stretch'>
+          <LogoWrapper flexDirection='column' bg='indigo.2' p={5} flex={1}>
+            <FlexBox justifyContent='flex-end'>
+              <Text fontSize={3} fontWeight='heavy' color='indigo.0'>
+                /the-purgatory
+              </Text>
+            </FlexBox>
+            <FlexBox flex={1} alignItems='center' justifyContent='center'>
+              <Logo primaryColor='indigo.0' secondaryColor='indigo.2' />
+            </FlexBox>
+          </LogoWrapper>
+          <FormWrapper
+            alignItems='center'
+            justifyContent='center'
+            p={5}
+            flex={1}
+          >
+            <FormContainer />
+          </FormWrapper>
+        </Wrapper>
+      </FlexBox>
+    </ErrorBoundary>
   );
 };
 

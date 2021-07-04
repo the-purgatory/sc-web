@@ -22,6 +22,7 @@
     "react-hooks/exhaustive-deps": "warn", // Checks effect dependencies
     "react/require-default-props": "off",
     "react/jsx-props-no-spreading": "off",
+    "no-underscore-dangle": "off",
     "no-unused-expressions": "warn",
     "no-shadow": "warn"
   },

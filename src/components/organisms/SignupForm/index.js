@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import Validator from '__UTILS/validator';
+import validator from '__UTILS/form';
 
 import {
   Input,
@@ -45,7 +45,7 @@ const VALIDATION_RULES = {
  * @todo if field is not required
  * - we still need to change it once to validate
  * - or we can set initial validation value to true
- * - then what is the requirement for it to be in Validator
+ * - then what is the requirement for it to be in validator
  *
  * @todo Scope this functionality out
  */
@@ -74,22 +74,22 @@ const SignupForm = ({
     switch (type) {
       case 'username': {
         setUsername(val);
-        setIsValidUsername(Validator(val, VALIDATION_RULES.username));
+        setIsValidUsername(validator(val, VALIDATION_RULES.username));
         break;
       }
       case 'password': {
         setPassword(val);
-        setIsValidPassword(Validator(val, VALIDATION_RULES.password));
+        setIsValidPassword(validator(val, VALIDATION_RULES.password));
         break;
       }
       case 'email': {
         setEmail(val);
-        setIsValidEmail(Validator(val, VALIDATION_RULES.email));
+        setIsValidEmail(validator(val, VALIDATION_RULES.email));
         break;
       }
       case 'phone': {
         setPhone(val);
-        setIsValidPhone(Validator(val, VALIDATION_RULES.phone));
+        setIsValidPhone(validator(val, VALIDATION_RULES.phone));
         break;
       }
       default:
@@ -99,19 +99,19 @@ const SignupForm = ({
   const onBlur = (type) => {
     switch (type) {
       case 'username': {
-        setIsValidUsername(Validator(username, VALIDATION_RULES.username));
+        setIsValidUsername(validator(username, VALIDATION_RULES.username));
         break;
       }
       case 'password': {
-        setIsValidPassword(Validator(password, VALIDATION_RULES.password));
+        setIsValidPassword(validator(password, VALIDATION_RULES.password));
         break;
       }
       case 'email': {
-        setIsValidEmail(Validator(email, VALIDATION_RULES.email));
+        setIsValidEmail(validator(email, VALIDATION_RULES.email));
         break;
       }
       case 'phone': {
-        setIsValidPhone(Validator(phone, VALIDATION_RULES.phone));
+        setIsValidPhone(validator(phone, VALIDATION_RULES.phone));
         break;
       }
       default:

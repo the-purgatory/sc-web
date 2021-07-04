@@ -9,7 +9,7 @@
   },
   "homepage": "https://github.com/the-purgatory/sc-web#readme",
   "scripts": {
-    "start": "webpack-dev-server --open --color --mode-development",
+    "start": "webpack-dev-server --open --color --mode development",
     "build": "webpack --mode production",
     "lint": "eslint --cache --format codeframe --ext mjs,jsx,js src",
     "lint:fix": "yarn lint --fix",
